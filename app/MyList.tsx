@@ -1,55 +1,41 @@
 "use client";
-import * as React from "react";
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import Divider from "@mui/material/Divider";
+import { useState } from "react";
+import { List, ListItem, ListItemText, ListItemButton } from "@mui/material";
 
 const MyList = () => {
-    const [selectedIndex, setSelectedIndex] = React.useState(1);
-    const [selectedList, setSelectedList] = React.useState<number[]>([]);
+    const [selectedIndex, setSelectedIndex] = useState<number>();
+    const [selectedList, setSelectedList] = useState<number[]>([]);
 
-    const handleListItemClick = (
-        event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-        index: number
-    ) => {
+    let products = [
+        { desc: "iPad", price: 20000 },
+        { desc: "iPhone 8", price: 20000 },
+        { desc: "iPhone X", price: 30000 },
+    ];
+
+    const handleListItemClick = (index: number) => {
         setSelectedIndex(index);
-        setSelectedList((selectedList) => [...selectedList, index]);
-        console.log(event);
+        setSelectedList((selectedIndex) => [...selectedIndex, index]);
     };
 
     return (
-        <Box sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}>
-            <List component="nav" aria-label="main mailbox folders">
-                <ListItemButton
-                    selected={selectedIndex === 0}
-                    onClick={(event) => handleListItemClick(event, 0)}
-                >
-                    <ListItemText primary="Inbox" />
-                </ListItemButton>
-                <ListItemButton
-                    selected={selectedIndex === 1}
-                    onClick={(event) => handleListItemClick(event, 1)}
-                >
-                    <ListItemText primary="Drafts" />
-                </ListItemButton>
-                <ListItemButton
-                    selected={selectedIndex === 2}
-                    onClick={(event) => handleListItemClick(event, 2)}
-                >
-                    <ListItemText primary="Trash" />
-                </ListItemButton>
-                <ListItemButton
-                    selected={selectedIndex === 3}
-                    onClick={(event) => handleListItemClick(event, 3)}
-                >
-                    <ListItemText primary="Spam" />
-                </ListItemButton>
+        <div>
+            <List subheader="Product list" aria-label="product list">
+                {products.map((product, index) => (
+                    <ListItem divider key={product.desc}>
+                        <ListItemButton
+                            selected={selectedIndex === index}
+                            onClick={(event) => handleListItemClick(index)}
+                        >
+                            <ListItemText
+                                primary={product.desc}
+                                secondary={product.price}
+                            ></ListItemText>
+                        </ListItemButton>
+                    </ListItem>
+                ))}
             </List>
-            <h1>{selectedList.map((num) => num + " ")}</h1>
-        </Box>
+            <h1>{selectedList.map((i) => i + " ")}</h1>
+        </div>
     );
 };
 export default MyList;
