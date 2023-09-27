@@ -1,8 +1,9 @@
 "use client";
 import { useState } from "react";
+import Button from "@mui/material/Button";
 
 export default function MyButton() {
-    const [randomList, setRandomList] = useState<number[]>([]);
+    const [randomList, setRandomList] = useState<number[]>([0]);
 
     function handleClick() {
         const addNumber = Math.floor(Math.random() * 11);
@@ -10,8 +11,10 @@ export default function MyButton() {
     }
 
     return (
-        <button onClick={handleClick}>
-            {randomList.map((num) => num + " ")}
-        </button>
+        <div>
+            <Button variant="contained" color="error" onClick={handleClick}>
+                {randomList.map((num) => num + " ")}
+            </Button>
+        </div>
     );
 }

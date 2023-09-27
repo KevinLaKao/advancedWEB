@@ -1,13 +1,21 @@
-import styles from "./page.module.css";
-import MyName from "./MyName";
 import MyButton from "./MyButton";
+import MyList from "./MyList";
 
 export default function Home() {
     return (
-        <div className={styles.main}>
-            <h1>Hello</h1>
-            <MyName />
-            <MyButton />
+        <div>
+            <h1>Hello World</h1>
+            <div
+                style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-evenly",
+                    alignItems: "center",
+                }}
+            >
+                <MyButton />
+                <MyList />
+            </div>
         </div>
     );
 }
