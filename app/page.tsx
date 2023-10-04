@@ -1,20 +1,12 @@
-import MyButton from "./MyButton";
-import MyList from "./MyList";
+import MyButton from "./0920";
+import MyList from "./0927";
+import NewList from "./1004";
 
 export default function Home() {
     return (
         <div>
-            <h1>Hello World</h1>
-            <div
-                style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-evenly",
-                    alignItems: "center",
-                }}
-            >
-                <MyButton />
-                <MyList />
+            <div style={{}}>
+                <NewList />
             </div>
         </div>
     );
