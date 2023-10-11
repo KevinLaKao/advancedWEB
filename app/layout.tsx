@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Inter } from "next/font/google";
+import Menu from "./1011/Menu";
+import ThemeRegistry from "./_theme/ThemeRegistry";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,7 +18,12 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={inter.className}>{children}</body>
+            <body className={inter.className}>
+                <ThemeRegistry>
+                    <Menu />
+                    {children}
+                </ThemeRegistry>
+            </body>
         </html>
     );
 }

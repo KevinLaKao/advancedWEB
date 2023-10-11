@@ -199,6 +199,8 @@ export default function ProductList() {
                                         setReviseDialog({
                                             ...reviseDialog,
                                             visible: true,
+                                            desc: product.desc,
+                                            price: product.price,
                                             i: index,
                                         });
                                     }}
